@@ -14,7 +14,7 @@
 <body>
 
     <div id="app">
-        <h1>FANCY A NEW BACKGROUND COLOR?</h1>
+        <h1 id="heading">FANCY A NEW BACKGROUND COLOR?</h1>
         <input type="text" v-model="color" placeholder="Enter a color name, hex or rgb(a) value">
         <button v-on:click="changecolor">Change color</button>
         <p id="desk"></p>
@@ -40,6 +40,18 @@
 
                         if ((test1 == true) || (test2 == true)) { // if passes change the background and write
                             document.body.style.backgroundColor = this.color;
+
+                            if ((this.color.toLowerCase() == 'black') || (this.color.toLowerCase() == "#000") || (this.color.toLowerCase() == "#000000") || (this.color.toLowerCase() == "rgb(0, 0 ,0)") || (this.color.toLowerCase() == "rgb(0, 0, 0, 1)")) {
+                                document.getElementById("heading").innerText = `HOW ORIGINAL ;)`;
+                            }
+                            else if ((this.color.toLowerCase() == 'white') || (this.color.toLowerCase() == "#fff") || (this.color.toLowerCase() == "#ffffff") || (this.color.toLowerCase() == "rgb(255, 255 , 255)") || (this.color.toLowerCase() == "rgb(255, 255, 255, 1)")) {
+                                document.getElementById("heading").innerText = `WOW! AMAZING TASTE`;
+                            }
+
+                            else if ((this.color.toLowerCase() == 'red') || (this.color.toLowerCase() == "#ff0000") || (this.color.toLowerCase() == "rgb(255, 0 , 0)") || (this.color.toLowerCase() == "rgb(255, 255, 255, 1)")) {
+                                document.getElementById("heading").innerText = `RED, LIKE MY RAGE`;
+                            }
+
                             document.getElementById("desk").innerText = `Your background color is ${this.color.toLowerCase()}`;
                             document.getElementById("desk").style.padding = "15px";
                             document.getElementById("desk").style.backgroundColor = "white";
