@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue_introduction</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="color" placeholder="Enter a color">
+        <button v-on:click="changecolor">Change color</button>
+        <br>
+        <p id="desk"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script type="text/javascript">
+
+        // 1. Создайте страницу с текстовым полем ввода. При нажатии на кнопку подтверждения, данные из поля должны отображаться в документе, поле ввода – очищаться, а фоновый цвет меняться в зависимости от введённого значения.
+        window.onload = function () {
+            var sample = new Vue({
+                el: "#app",
+                data: {
+                    color: ''
+                },
+                methods: {
+                    changecolor: function () {
+                        let s = new Option().style;
+                        s.color = this.color;
+                        let test1 = s.color == this.color;
+                        let test2 = /^#([0-9A-F]{3}){1,2}$/i.test(this.color);
+
+                        if ((test1 == true) || (test2 == true)) {
+                            document.body.style.backgroundColor = this.color;
+                            document.getElementById("desk").innerText = `Your background color is ${this.color}`;
+                            document.getElementById("desk").style.padding = "15px";
+                            document.getElementById("desk").style.backgroundColor = "white";
+                            document.getElementById("desk").style.display = "inline-block";
+                            this.color = '';
+                        }
+                        else {
+                            document.getElementById("desk").innerText = `Please enter a proper color value`;
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
