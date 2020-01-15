@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
     <title>vue_introduction</title>
 
 </head>
@@ -12,9 +14,9 @@
 <body>
 
     <div id="app">
-        <input type="text" v-model="color" placeholder="Enter a color">
+        <h1>FANCY A NEW BACKGROUND COLOR?</h1>
+        <input type="text" v-model="color" placeholder="Enter a color name, hex or rgb(a) value">
         <button v-on:click="changecolor">Change color</button>
-        <br>
         <p id="desk"></p>
     </div>
 
@@ -33,12 +35,12 @@
                     changecolor: function () { // validation
                         let s = new Option().style;
                         s.color = this.color;
-                        let test1 = s.color == this.color;
+                        let test1 = s.color == this.color.toLowerCase();
                         let test2 = /^#([0-9A-F]{3}){1,2}$/i.test(this.color);
 
                         if ((test1 == true) || (test2 == true)) { // if passes change the background and write
                             document.body.style.backgroundColor = this.color;
-                            document.getElementById("desk").innerText = `Your background color is ${this.color}`;
+                            document.getElementById("desk").innerText = `Your background color is ${this.color.toLowerCase()}`;
                             document.getElementById("desk").style.padding = "15px";
                             document.getElementById("desk").style.backgroundColor = "white";
                             document.getElementById("desk").style.display = "inline-block";
