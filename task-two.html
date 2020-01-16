@@ -44,8 +44,21 @@
                 methods: {
                     setMenuPosition: function () {
                         let x = event.clientX;
-                        this.left = `${x}px`
                         let y = event.clientY;
+                        let w = window.innerWidth;
+                        let h = window.innerHeight;
+                        let menuWidth = document.getElementById('context').offsetWidth;
+                        let menuHeight = document.getElementById('context').offsetHeight;
+
+                        if ((w - x) < menuWidth) {
+                            x -= menuWidth;
+                        }
+
+                        if ((h - y) < menuHeight) {
+                            y -= menuHeight;
+                        }
+
+                        this.left = `${x}px`
                         this.top = `${y}px`
                         document.getElementById("context").style.top = this.top
                         document.getElementById("context").style.left = this.left
