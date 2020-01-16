@@ -15,6 +15,11 @@
 
     <div id="app">
         <h1 id="heading">FANCY A NEW BACKGROUND COLOR?</h1>
+        <div id="examples">Examples of valid input:
+            <p>color: blue, yellow, aquamarine</p>
+            <p>hex: #fff or #ffffff</p>
+            <p>rgb(255, 255, 255) / rgba(255, 255, 255, 1) </p>
+        </div>
         <input type="text" v-model="color" placeholder="Enter a color name, hex or rgb(a) value">
         <button v-on:click="changecolor">Change color</button>
         <p id="desk"></p>
@@ -33,6 +38,9 @@
                 },
                 methods: {
                     changecolor: function () { // validation
+                        if (this.color == '') {
+                            document.getElementById("desk").innerText = `You need to enter a value before pressing the button`;
+                        }
                         let s = new Option().style;
                         s.color = this.color;
                         let test1 = s.color == this.color.toLowerCase();
@@ -41,23 +49,25 @@
                         if ((test1 == true) || (test2 == true)) { // if passes change the background and write
                             document.body.style.backgroundColor = this.color;
 
+                            document.getElementById("desk").innerText = `Your background color is ${this.color.toLowerCase()}`;
+                            document.getElementById("desk").style.padding = "15px";
+                            document.getElementById("desk").style.backgroundColor = "white";
+                            document.getElementById("desk").style.display = "inline-block";
+
+
                             if ((this.color.toLowerCase() == 'black') || (this.color.toLowerCase() == "#000") || (this.color.toLowerCase() == "#000000") || (this.color.toLowerCase() == "rgb(0, 0 ,0)") || (this.color.toLowerCase() == "rgb(0, 0, 0, 1)")) {
                                 document.getElementById("heading").innerText = `HOW ORIGINAL ;)`; // easter egg
                             }
-                            else if ((this.color.toLowerCase() == 'white') || (this.color.toLowerCase() == "#fff") || (this.color.toLowerCase() == "#ffffff") || (this.color.toLowerCase() == "rgb(255, 255 , 255)") || (this.color.toLowerCase() == "rgb(255, 255, 255, 1)")) {
+                            else if ((this.color.toLowerCase() == 'white') || (this.color.toLowerCase() == "#fff") || (this.color.toLowerCase() == "#ffffff") || (this.color.toLowerCase() == "rgb(255, 255, 255)") || (this.color.toLowerCase() == "rgba(255, 255, 255, 1)")) {
                                 document.getElementById("heading").innerText = `WOW! AMAZING TASTE`; // easter egg
                             }
 
                             else if ((this.color.toLowerCase() == 'red') || (this.color.toLowerCase() == "#ff0000") || (this.color.toLowerCase() == "rgb(255, 0 , 0)") || (this.color.toLowerCase() == "rgb(255, 255, 255, 1)")) {
                                 document.getElementById("heading").innerText = `RED, LIKE MY RAGE`; // easter egg
                             }
-
-                            document.getElementById("desk").innerText = `Your background color is ${this.color.toLowerCase()}`;
-                            document.getElementById("desk").style.padding = "15px";
-                            document.getElementById("desk").style.backgroundColor = "white";
-                            document.getElementById("desk").style.display = "inline-block";
                             this.color = '';
                         }
+
                         else { // if fails display error message
                             document.getElementById("desk").innerText = `Please enter a proper color value`;
                         }

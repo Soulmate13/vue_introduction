@@ -12,6 +12,13 @@ h1 {
     padding: 15px;
 }
 
+#examples {
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
 input {
     width: 600px;
     height: 50px;
