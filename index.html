@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f811e9d5c2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style/style.css">
     <title>vue_introduction</title>
 
 </head>
 
 <body>
-
-    <div id="app">
+    <div id="app-one">
+        <a id="nav" href="./task-two.html">to next task <i class="fas fa-arrow-right"></i> </a>
         <h1 id="heading">FANCY A NEW BACKGROUND COLOR?</h1>
         <div id="examples">Examples of valid input:
             <p>color: blue, yellow, aquamarine</p>
@@ -32,7 +33,7 @@
         // 1. Создайте страницу с текстовым полем ввода. При нажатии на кнопку подтверждения, данные из поля должны отображаться в документе, поле ввода – очищаться, а фоновый цвет меняться в зависимости от введённого значения.
         window.onload = function () {
             var sample = new Vue({
-                el: "#app",
+                el: "#app-one",
                 data: {
                     color: ''
                 },
